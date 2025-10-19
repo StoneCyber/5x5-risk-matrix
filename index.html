@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5x5 Risk Matrix Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>5x5 Risk Matrix Calculator</h1>
+        
+        <div class="calculator">
+            <div class="input-section">
+                <h2>Likelihood Assessment</h2>
+                
+                <div class="input-group">
+                    <label for="discoverability">Discoverability (1-5):</label>
+                    <select id="discoverability">
+                        <option value="">How easy to discover vulnerability?</option>
+                        <option value="1">1 - Very Difficult</option>
+                        <option value="2">2 - Difficult</option>
+                        <option value="3">3 - Moderate</option>
+                        <option value="4">4 - Easy</option>
+                        <option value="5">5 - Very Easy</option>
+                    </select>
+                    <small>Availability of vulnerability information and asset exposure</small>
+                </div>
+                
+                <div class="input-group">
+                    <label for="exploitability">Exploitability (1-5):</label>
+                    <select id="exploitability">
+                        <option value="">How easy to exploit vulnerability?</option>
+                        <option value="1">1 - Very Difficult</option>
+                        <option value="2">2 - Difficult</option>
+                        <option value="3">3 - Moderate</option>
+                        <option value="4">4 - Easy</option>
+                        <option value="5">5 - Very Easy</option>
+                    </select>
+                    <small>Access rights, tool complexity, and technical skills required</small>
+                </div>
+                
+                <div class="input-group">
+                    <label for="reproducibility">Reproducibility (1-5):</label>
+                    <select id="reproducibility">
+                        <option value="">How easy to reproduce attack?</option>
+                        <option value="1">1 - Very Difficult</option>
+                        <option value="2">2 - Difficult</option>
+                        <option value="3">3 - Moderate</option>
+                        <option value="4">4 - Easy</option>
+                        <option value="5">5 - Very Easy</option>
+                    </select>
+                    <small>Exploit customisation complexity and environmental conditions</small>
+                </div>
+            </div>
+            
+            <div class="input-section">
+                <h2>Impact Assessment</h2>
+                
+                <div class="input-group">
+                    <label for="confidentiality">Confidentiality Impact (1-5):</label>
+                    <select id="confidentiality">
+                        <option value="">Impact on data confidentiality?</option>
+                        <option value="1">1 - No Impact</option>
+                        <option value="2">2 - Limited Disclosure</option>
+                        <option value="3">3 - Moderate Disclosure</option>
+                        <option value="4">4 - Significant Disclosure</option>
+                        <option value="5">5 - Complete Disclosure</option>
+                    </select>
+                    <small>Unauthorized access to sensitive information</small>
+                </div>
+                
+                <div class="input-group">
+                    <label for="integrity">Integrity Impact (1-5):</label>
+                    <select id="integrity">
+                        <option value="">Impact on data integrity?</option>
+                        <option value="1">1 - No Impact</option>
+                        <option value="2">2 - Limited Modification</option>
+                        <option value="3">3 - Moderate Modification</option>
+                        <option value="4">4 - Significant Modification</option>
+                        <option value="5">5 - Complete Compromise</option>
+                    </select>
+                    <small>Unauthorized modification or destruction of data</small>
+                </div>
+                
+                <div class="input-group">
+                    <label for="availability">Availability Impact (1-5):</label>
+                    <select id="availability">
+                        <option value="">Impact on system availability?</option>
+                        <option value="1">1 - No Impact</option>
+                        <option value="2">2 - Limited Disruption</option>
+                        <option value="3">3 - Moderate Disruption</option>
+                        <option value="4">4 - Significant Disruption</option>
+                        <option value="5">5 - Complete Shutdown</option>
+                    </select>
+                    <small>Disruption of access to systems or services</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <button onclick="calculateRisk()" style="width: 100%; margin-bottom: 15px;">Calculate Risk</button>
+            <div id="result" class="result-display">
+                <p>Complete all assessment fields to calculate risk.</p>
+            </div>
+            <button id="copyBtn" onclick="copyRiskBreakdown()" style="display: none; margin-top: 10px; width: 100%;">Copy Risk Breakdown</button>
+        </div>
+        
+        <div class="matrix-display">
+            <h2>5x5 Risk Matrix</h2>
+            <table class="risk-matrix">
+                <thead>
+                    <tr>
+                        <th rowspan="2">Impact</th>
+                        <th colspan="5">Likelihood</th>
+                    </tr>
+                    <tr>
+                        <th>Rare (1)</th>
+                        <th>Unlikely (2)</th>
+                        <th>Possible (3)</th>
+                        <th>Likely (4)</th>
+                        <th>Highly Likely (5)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Very Severe (5)</th>
+                        <td class="medium">Medium<br>(5)</td>
+                        <td class="medium-high">Medium High<br>(10)</td>
+                        <td class="high">High<br>(15)</td>
+                        <td class="very-high">Very High<br>(20)</td>
+                        <td class="very-high">Very High<br>(25)</td>
+                    </tr>
+                    <tr>
+                        <th>Severe (4)</th>
+                        <td class="low">Low<br>(4)</td>
+                        <td class="medium">Medium<br>(8)</td>
+                        <td class="medium-high">Medium High<br>(12)</td>
+                        <td class="high">High<br>(16)</td>
+                        <td class="very-high">Very High<br>(20)</td>
+                    </tr>
+                    <tr>
+                        <th>Moderate (3)</th>
+                        <td class="low">Low<br>(3)</td>
+                        <td class="medium">Medium<br>(6)</td>
+                        <td class="medium">Medium<br>(9)</td>
+                        <td class="medium-high">Medium High<br>(12)</td>
+                        <td class="high">High<br>(15)</td>
+                    </tr>
+                    <tr>
+                        <th>Minor (2)</th>
+                        <td class="low">Low<br>(2)</td>
+                        <td class="low">Low<br>(4)</td>
+                        <td class="medium">Medium<br>(6)</td>
+                        <td class="medium">Medium<br>(8)</td>
+                        <td class="medium-high">Medium High<br>(10)</td>
+                    </tr>
+                    <tr>
+                        <th>Negligible (1)</th>
+                        <td class="low">Low<br>(1)</td>
+                        <td class="low">Low<br>(2)</td>
+                        <td class="low">Low<br>(3)</td>
+                        <td class="low">Low<br>(4)</td>
+                        <td class="medium">Medium<br>(5)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="legend">
+                <div class="legend-item">
+                    <span class="color-box low"></span>
+                    <span>Low (1-4)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="color-box medium"></span>
+                    <span>Medium (5-9)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="color-box medium-high"></span>
+                    <span>Medium High (10-12)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="color-box high"></span>
+                    <span>High (15-16)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="color-box very-high"></span>
+                    <span>Very High (20-25)</span>
+                </div>
+            </div>
+        </div>
+        
+        <footer style="text-align: center; padding: 20px; margin-top: 40px; border-top: 2px solid #ddd;">
+            <p style="margin: 0; color: #7f8c8d;">
+                <strong>Reference:</strong> Based on Singapore Cyber Security Agency (CSA) 
+                <a href="https://isomer-user-content.by.gov.sg/36/016e3838-a9e5-4c6e-a037-546e8b7ad684/Guide-to-Conducting-Cybersecurity-Risk-Assessment-for-CII.pdf" 
+                   target="_blank" 
+                   style="color: #3498db; text-decoration: none;">
+                    Guide to Conducting Cybersecurity Risk Assessment for CII
+                </a>
+            </p>
+        </footer>
+    </div>
+    
+    <script src="script.js?v=2"></script>
+</body>
+</html>

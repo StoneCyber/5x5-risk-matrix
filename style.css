@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #2c3e50;
+    margin: 25px 0 15px 0;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+h4 {
+    color: #34495e;
+    margin: 15px 0 10px 0;
+}
+
+small {
+    color: #7f8c8d;
+    font-style: italic;
+    display: block;
+    margin-top: 5px;
+}
+
+.calculator {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.input-section, .result-section {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+button {
+    background: #3498db;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+.result-display {
+    padding: 20px;
+    border-radius: 4px;
+    background: #ecf0f1;
+    min-height: 100px;
+}
+
+.risk-score {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.risk-rating {
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.risk-rating.low {
+    background: #2ecc71;
+    color: white;
+}
+
+.risk-rating.medium {
+    background: #fff3cd;
+    color: black;
+}
+
+.risk-rating.medium-high {
+    background: #f39c12;
+    color: white;
+}
+
+.risk-rating.high {
+    background: #e74c3c;
+    color: white;
+}
+
+.risk-rating.very-high {
+    background: #8b0000;
+    color: white;
+}
+
+.matrix-display {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.risk-matrix {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.risk-matrix th, .risk-matrix td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.risk-matrix th {
+    background: #34495e;
+    color: white;
+}
+
+.risk-matrix td.low {
+    background: #2ecc71;
+    color: white;
+}
+
+.risk-matrix td.medium {
+    background: #fff3cd;
+    color: black;
+}
+
+.risk-matrix td.medium-high {
+    background: #f39c12;
+    color: white;
+}
+
+.risk-matrix td.high {
+    background: #e74c3c;
+    color: white;
+}
+
+.risk-matrix td.very-high {
+    background: #8b0000;
+    color: white;
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+}
+
+.color-box.low {
+    background: #2ecc71;
+}
+
+.color-box.medium {
+    background: #fff3cd;
+}
+
+.color-box.medium-high {
+    background: #f39c12;
+}
+
+.color-box.high {
+    background: #e74c3c;
+}
+
+.color-box.very-high {
+    background: #8b0000;
+}
+
+@media (max-width: 768px) {
+    .calculator {
+        grid-template-columns: 1fr;
+    }
+    
+    .legend {
+        flex-direction: column;
+        align-items: center;
+    }
+}
